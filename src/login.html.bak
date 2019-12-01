@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="css/login.css"/>
+	</head>
+	<body>
+		<div class="header"></div>
+		<div class="main">
+			<form>
+				<div class="form-title">
+					登录 -
+					<span style="color: #FFAA00;">汤</span>
+					<span style="color: #00EEAA;">圆</span>
+					<span style="color: #DDAA22;">笔</span>
+					<span style="color: #0055EE;">记</span>
+					<span class="smaller-text">浏览器插件</span>
+				</div>
+				<dl>
+					<dd>
+						<label for="account">帐号<span class="error-tip"></span></label>
+						<input name="account" placeholder="用户名/手机/邮箱">
+					</dd>
+					<dd>
+						<label for="password">密码<span class="error-tip"></span></label>
+						<input name="password" type="password" placeholder="密码">
+					</dd>
+					<dd data-role="forget-pwd">
+						<a href="#" data-role="forget-pwd-btn">忘记密码?</a>
+					</dd>
+					<dd>
+						<button data-role="login-btn">登录</button>
+					</dd>
+					<dd>
+						<button data-role="to-signup-btn">没有帐号？去注册</button>
+					</dd>
+					<dd class="form-footer">
+						<a href="#">
+							<span style="color: #FFAA00;">汤</span>
+							<span style="color: #00EEAA;">圆</span>
+							<span style="color: #DDAA22;">笔</span>
+							<span style="color: #0055EE;">记</span>
+							官网
+						</a>
+					</dd>
+				</dl>
+			</form>
+		</div>
+		<div class="footer"></div>
+		<script src="lib/common.js"></script>
+		<script src="js/login.js"></script>
+	</body>
+</html>

@@ -1,0 +1,124 @@
+html, body{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	font-size: 16px;
+}
+
+.header{
+	width: 100%;
+}
+
+.main{
+	width: 100%;
+	form{
+		width: 350px;
+		box-shadow:  0 0 10px #666666;
+		border-radius: .5em;
+		padding: 2em;
+		margin: 100px auto;
+		.form-title{
+			font-size: 1.2em;
+			padding: .8em;
+		}
+		.form-footer{
+			text-align: center;
+			margin: 0;
+			a{
+				text-decoration: none;
+				color: #00AA00;
+				&:hover{
+					color: #005500;
+				}
+			}
+		}
+		dl{
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			dd{
+				margin: 0;
+				padding: 0;
+				margin-bottom: 1em;
+				&[data-role=forget-pwd]{
+					text-align: right;
+					a{
+						text-decoration: none;
+						color: #888888;
+						&:hover{
+							color: #444444;
+						}
+					}
+				}
+				.error-tip{
+					color: #FF0000;
+					font-size: .9em;
+					margin-left: 1em;
+				}
+				label{
+					display: inline-block;
+					width: 100%;
+					font-size: .9em;
+					margin-bottom: .2em;
+					color: #666666;
+				}
+				input{
+					box-sizing: border-box;
+					display: inline-block;
+					width: 100%;
+					padding: .8em;
+					font-size: 1em;
+					border-radius: .5em;
+					border: solid thin #AAAAAA;
+					outline: none;
+					background: #FFFFAA;
+					&:focus{
+						border: solid thin #00AAFF;
+						box-shadow: 0 0 5px #00AAFF;
+					}
+				}
+				button{
+					display: inline-block;
+					padding: .6em;
+					width: 100%;
+					font-size: 1em;
+					border-radius: .5em;
+					border: solid thin #AAAAAA;
+					outline: none;
+					color: #FFFFFF;
+					cursor: pointer;
+					font-weight: bold;
+					letter-spacing: 5px;
+					&[data-role=login-btn]{
+						background: #00AA00;
+						border: solid thin #008800;
+						&:hover{
+							background: #008800;
+						}
+						&:active{
+							background: #006600;
+						}
+					}
+					&[data-role=to-signup-btn]{
+						background: #2222FF;
+						border: solid thin #222288;
+						&:hover{
+							background: #2222CC;
+						}
+						&:active{
+							background: #2222AA;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.footer{
+	width: 100%;
+}
+
+.smaller-text{
+	font-size: 80%;
+}

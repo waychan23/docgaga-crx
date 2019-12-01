@@ -1,0 +1,44 @@
+{
+    "manifest_version": 2,
+
+    "name": "汤圆笔记",
+    "description": "汤圆笔记",
+    "version": "0.0.1",
+
+    "browser_action": {
+		"default_icon": "img/icon.png",
+		"default_popup": "popup.html"
+    },
+
+    "content_scripts": [
+		{
+			"matches": ["http://*/*", "https://*/*"],
+			"css": [
+					"css/iconfont/material-icons.css",
+					"css/components/translate.css", 
+					"css/components/note-panel.css",
+					"css/components/note-list-panel.css", 
+					"css/widgets/keyword-select.css",
+					"css/themes/theme-lizzy.css"
+			],
+			"js": ["lib/common.js", "js/inject.js"]
+		}
+    ],
+
+	"background": {
+		"scripts": [ "lib/common.js", "js/background.js" ],
+		"persistent": true
+	},
+
+    "permissions": [
+		"tabs", "activeTab", "storage"
+    ],
+
+	"web_accessible_resources": [
+		"*.html",
+		"lib/*",
+		"img/*",
+		"css/*",
+		"js/*"
+	]
+}

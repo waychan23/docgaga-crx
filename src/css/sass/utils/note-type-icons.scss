@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+@mixin note-type-icon-colors($attr-name){
+    &[data-#{$attr-name}=c_m]{
+        color: #FFCC00 !important;
+    }
+    &[data-#{$attr-name}=c_n]{
+        color: #2d9afa !important;
+    }
+    &[data-#{$attr-name}=c_q]{
+        color: #FF4400 !important;
+    }
+    &[data-#{$attr-name}=c_t]{
+        color: #66AA55 !important;
+    }
+    &[data-#{$attr-name}=c_d]{
+        color: #AAAAAA !important;
+    }
+    &[data-#{$attr-name}=c_a]{
+        color: #FF6F00 !important;
+    }
+}
+
+@mixin note-type-icon-unicolor($attr-name, $which-color){
+    &[data-#{$attr-name}=c_m]{
+        color: $which-color !important;
+    }
+    &[data-#{$attr-name}=c_n]{
+        color: $which-color !important;
+    }
+    &[data-#{$attr-name}=c_q]{
+        color: $which-color !important;
+    }
+    &[data-#{$attr-name}=c_t]{
+        color: $which-color !important;
+    }
+    &[data-#{$attr-name}=c_d]{
+        color: $which-color !important;
+    }
+    &[data-#{$attr-name}=c_a]{
+        color: $which-color !important;
+    }
+}

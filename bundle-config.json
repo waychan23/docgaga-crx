@@ -1,0 +1,13 @@
+{
+	"entries": [
+		{ "file": "./src/js/inject.js", "name": "inject.js" },
+		{ "file": "./src/js/popup.js", "name": "popup.js" },
+		{ "file": "./src/js/background.js", "name": "background.js" },
+		{ "file": "./src/js/login-success.js", "name": "login-success.js" },
+		{ "file": "./src/js/oauth-login.js", "name": "oauth-login.js" },
+		{ "file": "./src/js/settings-page.js", "name": "settings-page.js" }
+	],
+	"common": [
+		"jquery", "utf8", "base-64", "immutable", "rxjs", "immutablediff"
+	]
+}

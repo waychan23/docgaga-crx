@@ -1,0 +1,36 @@
+@font-face {
+  font-family: 'DocGaga Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('chrome-extension://__MSG_@@extension_id__/css/iconfont/MaterialIcons-Regular.eot'); /* For IE6-8 */
+  src: local('chrome-extension://__MSG_@@extension_id__/css/iconfont/Material Icons'),
+       local('chrome-extension://__MSG_@@extension_id__/css/iconfont/MaterialIcons-Regular'),
+       url('chrome-extension://__MSG_@@extension_id__/css/iconfont/MaterialIcons-Regular.woff2') format('woff2'),
+       url('chrome-extension://__MSG_@@extension_id__/css/iconfont/MaterialIcons-Regular.woff') format('woff'),
+       url('chrome-extension://__MSG_@@extension_id__/css/iconfont/MaterialIcons-Regular.ttf') format('truetype');
+}
+
+.material-icons {
+  font-family: 'DocGaga Material Icons' !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block !important;
+  line-height: 1 !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  word-wrap: normal !important;
+  white-space: nowrap !important;
+  direction: ltr !important;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}

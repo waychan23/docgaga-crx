@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<title>汤圆笔记</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="css/popup.css"/>
+	<script src="lib/common.js"></script>
+	<script src="js/popup.js"></script>
+    </head>
+    <body>
+		<div class="wrapper">
+			<div id="header" class="header">
+				<div class="title">
+					<span style="color: #FFAA00;">汤</span>
+					<span style="color: #00EEAA;">圆</span>
+					<span style="color: #DDAA22;">笔</span>
+					<span style="color: #0055EE;">记</span>
+					<span style="font-size: 90%; font-weight: normal;">浏览器插件</span>
+				</div>
+			</div>
+			<div id="content" class="content">
+				<div class="info">
+					<div class="info-block" data-role="user-info" data-loggedIn="yes">
+						<img class="avartar"/>
+						<div class="username"></div>
+						<div class="note-count">共<span data-role="info-value"></span>条笔记</div>
+						<div class="user-title"><span data-role="info-value"></span></div>
+					</div>
+					<div class="info-block" data-role="user-info" data-loggedIn="no">
+						<a class="link" data-role="to-login-btn" title="去登录">未登录</a>
+					</div>
+					<div class="info-block" data-role="accessibility-info" data-accessibility="yes">
+						<span class="accessibility-info-title">汤圆笔记已在当前页面启动</span><br/>
+						<div class="accessibility-op-btn-group" data-role="accessible">
+							<a class="accessibility-op-btn danger" data-role="perm-block-btn" title="以后访问该页面的时候不再启动汤圆笔记">&nbsp;-&nbsp;不再启动<a>							
+							<a class="accessibility-op-btn warn" data-role="tmp-block-btn" title="临时关闭在该页面运行的汤圆笔记">临时关闭</a>
+						</div>
+					</div>
+					<div class="info-block" data-role="accessibility-info" data-accessibility="no">
+						<span class="accessibility-info-title">汤圆笔记未在当前页面启动</span><br/>
+						<div class="accessibility-op-btn-group" data-role="accessible">
+							<a class="accessibility-op-btn primary" data-role="perm-allow-btn" title="以后访问该页面的时候默认启动汤圆笔记">&nbsp;+&nbsp;默认开启<a>
+							<a class="accessibility-op-btn success" data-role="tmp-allow-btn" title="在该页面临时开启汤圆笔记">临时开启</a>
+						</div>
+					</div>
+					<div class="info-block" data-role="ac-scope-info" data-accessibility="yes">
+						<span class="ac-scope-info-title">哪些页面不需要启动呢？</span>
+						<div class="ac-scope-op-btn-group">
+							<a class="ac-scope-op-btn default" data-role="site-scope-btn">该网站</a>
+							<a class="ac-scope-op-btn default" data-role="page-scope-btn">仅该页面</a>
+							<a class="ac-scope-op-btn default" data-role="cancel-btn">取消</a>
+						</div>
+					</div>
+					<div class="info-block" data-role="ac-scope-info" data-accessibility="no">
+						<span class="ac-scope-info-title">哪些页面需要默认启动呢?</span>
+						<div class="ac-scope-op-btn-group">
+							<a class="ac-scope-op-btn default" data-role="site-scope-btn">该网站</a>
+							<a class="ac-scope-op-btn default" data-role="page-scope-btn">仅该网页</a>
+							<a class="ac-scope-op-btn default" data-role="cancel-btn">取消</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="footer" class="footer">
+				<a class="link nodev" data-role="to-signup-btn">去注册</a>
+				<a class="link nodev" data-role="logout-btn">我的帐号</a>
+				<a class="link nodev" data-role="setting-btn">设置</a>
+				<a class="link" data-role="dev-config-btn">插件服务器</a>
+				<a class="link" data-role="auth-config-btn">资源服务器</a>
+			</div>
+		</div>
+		<script src="lib/common.js"></script>
+		<script src="js/popup.js"></script>
+    </body>
+</html>

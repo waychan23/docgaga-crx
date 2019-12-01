@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>登录 - 汤圆笔记浏览器插件</title>
+		<meta charset="UTF-8"/>
+		<style type="text/css">
+		 body{
+			 text-align: center;
+		 }
+		 
+		 #main{
+			 display: inline-block;
+			 padding: 2em;
+			 border-radius: 5px;
+			 box-shadow: 0 0 10px #666666;
+			 margin: 100px auto;
+			 font-size: 16px;
+			 min-width: 250px;
+		 }
+
+		 #info{
+			 padding: 1.2em;
+			 color: ;
+		 }
+
+		 #buttons{
+			 display: none;
+		 }
+
+		 button{
+			 display: inline-block;
+			 width: 80%;
+			 margin-bottom: 1em;
+			 font-size: 1.1em;
+			 padding: .8em;
+			 background: none;
+			 border: none;
+			 outline: none;
+			 border-radius: 5px;
+			 color: white;
+			 cursor: pointer;
+		 }
+
+		 #login-btn{
+			 background: #00CC00;
+		 }
+		 #login-btn:hover{
+			 background: #00BB00;
+		 }
+
+		 #logout-btn{
+			 background: #FF0000;
+		 }
+		 #logout-btn:hover{
+			 background: #EE0000;
+		 }
+
+		 #signup-btn{
+			 background: #0000FF;
+		 }
+		 #signup-btn:hover{
+			 background: #0000DD;
+		 }
+
+		 #footer{
+			 color: #444444;
+			 font-size: 14px;
+		 }
+		 
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<div id="title">
+				<div class="form-title">
+					登录 -
+					<span style="color: #FFAA00;">汤</span>
+					<span style="color: #00EEAA;">圆</span>
+					<span style="color: #DDAA22;">笔</span>
+					<span style="color: #0055EE;">记</span>
+					<span class="smaller-text">浏览器插件</span>
+				</div>
+			</div>
+			<div id="info"></div>
+			<div id="buttons">
+				<button id="logout-btn">退出登录</button>
+				<button id="login-btn">汤圆笔记 - 授权登录</button>
+				<button id="signup-btn">没有帐号？去注册</button>
+			</div>
+			<div id="footer">
+				注: "汤圆笔记浏览器插件"是"汤圆笔记"平台旗下应用
+			</div>
+		</div>
+		<script src="lib/common.js"></script>
+		<script src="js/oauth-login.js"></script>
+	</body>
+</html>

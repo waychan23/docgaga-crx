@@ -1,0 +1,619 @@
+@charset "UTF-8";
+@import "../utils/customization.scss";
+@import "../utils/note-type-icons.scss";
+
+$list-panel-base-font-size: 15px;
+$list-panel-width: 290px;
+$list-panel-height: 60%;
+//$list-panel-height: 500px;
+$list-panel-bg-color: #0066FF;
+$list-panel-margin-right: 10px;
+$list-panel-box-shadow: 0 0 10px #666666;
+
+$list-bg-color: #FEFEFE;
+
+$list-header-height: 1.8em;
+$list-footer-height: 1.8em;
+
+$list-item-h-padding: .4em;
+$list-item-v-padding: .5em;
+$list-item-line-height: 1.2em;
+$list-item-font-size: .9em;
+$list-item-height: $list-item-v-padding * 2 + $list-item-line-height;
+$list-item-color: #666666;
+$list-item-color-highlight: #FFFFFF;
+$list-item-bg-color-highlight: #00BBFF;
+$list-item-bg-color-active: #00AAFF;
+
+$tab-panel-height: 1.8em;
+
+@mixin collapsed-layout{
+  width: 2em;
+  height: $list-header-height;
+  min-height: 0 !important;
+  max-height: 100%;
+  background: #FF0000 !important;
+  box-shadow: 0 0 10px #FF0000,
+              0 0 13px #FFFFFF;
+  .docgaga-note-list-header{
+    position: relative;
+    .docgaga-note-list-title{
+      display: none;
+      }
+    .docgaga-note-list-panel-header-btn{
+      user-select: none;
+      margin: 0;
+      &:hover{
+        background: #EE0000 !important;
+        }
+      &:active{
+        background: #DD0000 !important;
+        }
+      }
+    }
+  .docgaga-note-list-main{
+    display: none;
+    }
+  .docgaga-note-list-footer{
+    display: none;
+    }
+  }
+
+@mixin default-layout{
+  z-index: $float-panel-z-index;
+  position: fixed;
+  width: $list-panel-width;
+  height: $list-panel-height;
+  min-height: 200px !important;
+  max-height: 500px !important;
+  top: 150px;
+  top: calc((100% - #{$list-panel-height}) / 2);
+  right: $list-panel-margin-right;
+  font-size: $list-panel-base-font-size;
+  background: $list-panel-bg-color !important;
+  box-shadow: $list-panel-box-shadow;
+//  border-radius: .5em;
+  overflow: visible;
+
+  .docgaga-note-list-wrapper{
+    position: relative;     
+    width: 100%;
+    height: 100%;
+    font-size: 1em;
+    .docgaga-note-list-filter{
+      z-index: $float-panel-z-index + 10;
+      display: none;
+      position: absolute;
+      width: 100%;
+      background: #FAFAFF !important;
+      bottom: $list-footer-height;
+      padding-bottom: 2px;
+      box-shadow: 0 -0.1em .1em #BBBBBB;
+      div[data-role=advanced-filter]{
+        width: 100%;
+        box-sizing: border-box !important;
+        overflow: visible;
+        div[data-role=block-title]{
+          border-left: solid 4px #6666FF;
+          font-size: .9em;
+          padding-left: .5em;
+          }
+        div[data-role=block-content]{
+          margin: .2em;
+          width: calc(100% - .2em * 2);
+          border-bottom: solid thin #DDDDFF;
+          &:last-child{
+            border-bottom: none;
+            }
+          }
+        div[data-role=keyword-select-block]{
+          border-bottom: solid thin #F3F3FF;
+          *{
+            @include thin-scrollbar;
+            }
+          .docgaga-keyword-select-list-need-toggle{
+            box-shadow: none;
+            }
+          }
+        }
+      div[data-role=search-bar]{
+        box-sizing: border-box !important;
+        width: 100%;
+        padding: .1em .2em;
+        font-size: 1em;
+        height: 1.8em;
+        line-height: 1.6em;
+        select[data-role=scope-select]{
+          margin: 0;
+          padding:0;
+          display: inline-block;
+          width: 4em;
+          float: left;
+          height: 1.8em;
+          line-height: 1.8em;
+          font-size: .9em;
+          }
+        input[data-role=search-input]{
+          font-size: .9em;
+          width: calc(100% - .2em * 2 - 4em - 1em - .5em * 2 - .2em * 2);
+          margin: .2em 0;
+          height: 90%;
+          outline: solid thin #AAAAAA !important;
+          padding-left: .5em;
+          &:focus{
+            outline: none !important;
+            box-shadow: 0 0 2px red !important;
+            }
+          }
+        a[data-role=toggle-advanced]{
+          font-size: 1em;
+          padding: 0 .5em;
+          float: right;
+          cursor: pointer;
+          line-height: 1.6em;
+          font-size: .9em;
+          &:hover{
+            background: #EEEEFF !important;
+            }
+          &:active{
+            background: #DDDDFF !important;
+            }
+          &[data-active=true]{
+            background: #DDDDFF !important;
+            }
+          }
+        &::after{
+          content: ' ';
+          display: block;
+          clear: both;
+          height: 0 !important;
+          }
+        }
+      }
+    .docgaga-note-list-menu{
+      z-index: $float-panel-z-index + 1;
+      position: absolute;
+      width: 100%;
+      height: 2.2em;
+      background: none;
+      top: -2.4em;
+      left: 0;
+      ul{
+        margin: 0;
+        padding: 0 1em;
+        list-style: none;
+        text-align: center;
+        li{
+          display: inline-block;
+          text-align: center;
+          margin: 0 .2em;
+          &.docgaga-note-list-menu-btn{
+            width: 2em;
+            height: 2em;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 2em;
+            cursor: pointer;
+            font-weight: bolder;
+            color: #FFFFFF;
+            box-shadow: 0 0 10px #FFFFFF,
+                        0 0 6px #888888;
+            user-select: none;
+            &[data-role=new-note-btn]{
+              background: #00CCEE; 
+              color: #FFFFFF;             
+              &:hover{
+                background: #00BBDD;  
+                }
+              &:active{
+                background: #00AACC;
+                }
+              }
+            }
+          }
+        }
+      }
+    .docgaga-note-list-header{
+      width: 100%;
+      position: absolute;
+      height: $list-header-height;
+      top: 0;
+      user-select: none;
+      z-index: $float-panel-z-index + 9;
+      overflow: hidden;
+      .docgaga-note-list-title{
+        display: inline-block;
+        height: $list-header-height;
+        line-height: $list-header-height;
+        margin: 0 1em;
+        color: #FFFFFF !important;
+        font-size: .95em;
+        user-select: none;
+        a{
+          color: #EEEE00 !important;
+          line-height: $list-header-height;
+          padding: 0 .5em;
+          cursor: pointer;
+          &:hover{
+            color: #FFFF00 !important;
+            }
+          }
+        }
+      .docgaga-note-list-panel-header-btn{
+        font-size: 1em;
+        line-height: $list-header-height;
+        color: #FFFFFF !important;
+        padding: 0 .5em;
+        margin: 0 .5em;
+        user-select: none;
+        &:hover{
+          background: #0044EE !important;
+          cursor: pointer;
+          }
+
+        &:active{
+          background: #004499 !important;
+          }
+
+        &.docgaga-note-list-panel-toggle-btn{
+          float: right;
+          }
+        }
+      }
+    
+    .docgaga-note-list-footer{
+      width: 100%;
+      position: absolute;
+      height: $list-footer-height;
+      bottom: 0;
+      overflow: hidden;
+      .docgaga-note-list-footer-info{
+        display: inline-block;
+        color: #FFFFFF !important;
+        margin: 0 1em;
+        height: $list-footer-height;
+        line-height: $list-footer-height;
+        }
+      .docgaga-note-list-panel-footer-btn{
+        font-size: 1em;
+        line-height: $list-header-height;
+        color: #FFFFFF !important;
+        padding: 0 .5em;
+        margin-right: .5em;
+        user-select: none;
+        float: right;
+
+        &:hover{
+          background: #0044EE !important;
+          cursor: pointer;
+          }
+
+        &:active{
+          background: #004499 !important;
+          }
+        &.docgaga-note-list-footer-btn-active{
+          background: #004499 !important;
+          }
+        }
+      }
+
+    .docgaga-note-list-control-panel{
+      margin-top: $list-header-height;
+      position: absolute;
+      min-height: $tab-panel-height;
+      height: auto;
+      background: #EEEEFF;
+      left: 0;
+      top: 0;
+      width: 100%;
+      box-shadow: 0 0px 3px #9999BB;
+      z-index: $float-panel-z-index + 8;
+      &.docgaga-note-list-control-panel-collapsed{
+        height: calc(#{$tab-panel-height} + 2px);
+        overflow: hidden;
+        }
+      .docgaga-note-list-control-panel-toggle-btn{
+        position: absolute;
+//        margin: .2em .1em;
+        font-size: 1em;
+        padding: 0 .5em;
+        border-radius: .2em;
+        right: .1em;
+        bottom: .1em;
+        text-decoration: none;
+        border: none;
+        &:hover{
+          background: #DADAFF !important;
+          cursor: pointer;
+          text-decoration: none;
+          border: none;
+          }
+        &:active{
+          background: #D2D2FF !important;
+          text-decoration: none;
+          border: none;
+          }
+        }
+      ul.docgaga-note-list-tabs{
+        display: inline-block;
+        border: none;
+        padding: 0;
+        margin: 0;
+        width: calc(100% - .1em * 2 - 1em - .5em * 2);
+        min-height: calc(#{$tab-panel-height} + 2px);
+        overflow: hidden;
+        user-select: none;
+        li{
+          display: inline-block;
+          line-height: $tab-panel-height;
+          height: $tab-panel-height;
+          vertical-align: middle;
+          padding: 0 .4em;
+          padding-bottom: 2px;
+          cursor: pointer;
+          margin-right: 2px;
+          user-select: none;
+          min-width: calc(100% / 5) !important;
+          text-align: center !important;
+          &.docgaga-note-list-tab-selected{
+//            background: #6666FF;
+//            color: #FFFFFF;
+            line-height: $tab-panel-height;
+            height: $tab-panel-height;
+            border-bottom: solid 2px #6666FF;
+            padding-bottom: 0;
+            span[data-role=count]{
+//              color: yellow;
+              }
+            }
+          &:hover{
+            background: #6666FF !important;
+            color: #FFFFFF !important;
+            span[data-role=icon]{
+              @include note-type-icon-unicolor("type", #FFFFFF);
+            }
+            span[data-role=count]{
+              color: yellow !important;
+              }
+            }
+          img[data-role=icon]{
+            height: $tab-panel-height * 0.7 !important;
+            margin-bottom: $tab-panel-height * 0.15;
+            }
+          span[data-role=icon]{
+            font-family: "DocGaga Material Icons" !important;
+            height: $tab-panel-height * 0.7 !important;
+            margin-bottom: $tab-panel-height * 0.15;
+            font-size: 1em !important;
+            color: #0000FF !important;
+          }
+          span[data-role=count]{
+            font-size: .9em;
+            color: #FF0000 !important;
+            }
+          }
+        }
+      }
+    .docgaga-note-list-main{
+      width: 100%;
+      height: calc(100% - #{$list-header-height} - #{$list-footer-height} - #{$tab-panel-height});
+      padding-top: $list-header-height + $tab-panel-height;
+      .docgaga-note-list-empty-info{
+        background: $list-bg-color !important;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        font-size: 1.5em;
+        line-height: 3em;
+        display: none;
+        .docgaga-info-line{
+          text-align: inherit;
+          display: block;
+          line-height: 1.8em;
+          padding: .5em;
+          box-sizing: border-box;
+        }
+        .docgaga-info-link{
+          text-decoration: none;
+          color: #0088FF !important;
+          line-height: inherit;
+          cursor: pointer;
+          vertical-align: middle;
+          font-size: .9em;
+          user-select: none;
+          &:hover{
+            color: #0000FF !important;
+          }
+        }
+        &.docgaga-note-list-empty-info-small-text{
+            font-size: 1.2em;
+          }
+        }
+      ul.docgaga-note-list{
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        background: $list-bg-color !important;
+        overflow-y: scroll;
+        @include thin-scrollbar;
+        li{
+          user-select: none;
+          font-size: $list-item-font-size;
+          line-height: $list-item-line-height;
+          padding: $list-item-v-padding $list-item-h-padding;
+          white-space: nowrap;
+          width: calc(100% - #{$list-item-h-padding} * 2;
+          overflow: hidden;
+          border-bottom: solid thin #F2F2F2;
+          color: $list-item-color !important;
+          &:last-child{
+            margin-bottom: 80px;
+            box-shadow: 0 3px 3px #EEEEFF;
+            }
+          &::after{
+            content: ' ';
+            display: block;
+            clear: both;
+            height: 0 !important;
+            }
+          div[data-role=keywords]{
+            display: inline-block;
+            max-width: calc(100% - 9em);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: .9em;
+            color: #999999;
+            box-sizing: border-box;
+            padding-left: .5em;
+            }
+          div[data-role=extra-info]{
+            text-align: left;
+            float: left;
+            font-size: .9em;
+            // width: calc(100% - 10em - #{$list-item-h-padding} * 2);
+            width: 1.5em;
+            color: #999999 !important;
+            a{
+              text-decoration: none;
+              color: #0000FF !important;
+              cursor: pointer;
+              span[data-role=icon]{
+                font-family: "DocGaga Material Icons" !important;
+                color: #0000FF !important;
+                margin-left: .3em !important;
+              }
+              &:hover{
+                color: #FF0000 !important;
+                }
+              }
+              &:active{
+                color: #FF0000 !important;
+                }
+            }
+          div[data-role=last-update-time]{
+            font-size: .9em;
+            text-align: right;
+            color: #888888 !important;
+            float: right;
+            width: 6em;
+            &:hover{
+              color: #222222 !important;
+              }
+            }
+          &:hover{
+            color: $list-item-color-highlight !important;
+            background: $list-item-bg-color-highlight !important;
+            cursor: pointer;
+            div[data-role=keywords]{
+              color: #333333 !important;
+              }
+            div[data-role=extra-info]{
+              color: #FAFAFA !important;
+              a{
+                color: #FFFF00 !important;
+                &:hover{
+                  color: #FF0000 !important;
+                  }
+                span[data-role=icon]{
+                  color: #FFFF00 !important;
+                  }
+                }
+              }
+            div[data-role=last-update-time]{
+              color: #222222 !important;
+              }
+            .docgaga-note-list-item-delete-btn{
+              font-family: "DocGaga Material Icons" !important;
+              color: #FFEEEE !important;
+              font-weight: bold;
+              user-select: none;
+              line-height: $list-item-line-height;
+              float: right;
+              font-size: 1.2em;
+              padding: 0 .3em;
+              height: $list-item-font-size !important;
+              display: inline;
+              border-radius: 50%;
+              }
+            }
+          &:active{
+            background: $list-item-bg-color-active !important;
+            }
+          .docgaga-note-list-item-title{
+            display: inline-block;
+            width: calc(100% - 2em);
+            line-height: $list-item-line-height;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            span[data-role=text]{
+              white-space: nowrap;
+              }
+            span[data-role=icon]{
+              font-family: "DocGaga Material Icons" !important;
+              float: left !important;
+              margin-right: .5em !important;
+              @include note-type-icon-colors("type");
+            }
+            img{
+              float: left;
+              height: $list-item-line-height !important;
+              margin-right: .5em;
+              }
+            }
+          .docgaga-note-list-item-delete-btn{
+            user-select: none;
+            display: none;
+            }              
+          }
+        }
+      }
+    }
+  }
+
+.docgaga-note-list-panel{
+  @include reset;
+  @include default-layout;
+
+  &.hidden{
+    display: none;
+    }
+
+  &.docgaga-note-list-panel-empty{
+    .docgaga-note-list-main{
+
+      ul{
+        display: none;
+        }
+
+      .docgaga-note-list-empty-info{
+        display: block;
+        }
+      }
+    }
+
+
+  &.docgaga-note-list-panel-collapsed{
+    @include collapsed-layout;
+    border-radius: .5em;
+    overflow: hidden;
+    .docgaga-note-list-menu{
+      display: none;
+      }
+
+/*
+    @keyframes docgaga-note-list-blink{
+      to {
+        background: #EEEE00 !important;
+        box-shadow: 0 0 5px #EEEE00 !important;
+        }
+      }
+    &.docgaga-note-list-blinking{
+      animation: docgaga-note-list-blink 1s infinite;
+      animation-direction: alternate;
+      }
+        */
+    }
+  }

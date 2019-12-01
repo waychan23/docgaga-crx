@@ -1,0 +1,323 @@
+@import './utils/customization.scss';
+
+$main_width: 1024px;
+$padding_top: 90px;
+
+html, body{
+    margin: 0;
+    padding: 0;
+}
+
+select{
+    border: none;
+    background: none;
+    outline: none;
+    border-bottom: solid thin black;
+    text-align: center;
+    color: #0000AA;
+    box-sizing: border-box;
+    padding: 0;
+    padding-bottom: .2em;
+    vertical-align: middle;
+}
+
+input{
+    vertical-align: middle;
+}
+
+#header{
+    width: 100%;
+    min-width: $main_width;
+    box-sizing: border-box;
+    position: fixed;
+    padding: 1em calc((100% - #{$main_width}) / 2);
+    height: 70px;
+    top: 0;
+    left: 0;
+    background: white;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 2px #DDDDDD;
+    z-index: 999999999;
+    #header-title{
+        float: left;
+        font-size: 30px;
+        height: 100%;
+    }
+    #control-btn-group{
+        float: right;
+        height: 100%;
+        button{
+            display: inline-block;
+            border: none;
+            background: none;
+            outline: none;
+            padding: 1em 0;
+            font-size: 1.2em;
+            cursor: pointer;
+            &[data-role=save-btn]{
+                color: #00AA00;
+            }
+            &[data-role=cancel-btn]{
+                color: #EE0000;
+            }
+            &[data-role=restore-btn]{
+                color: #666666;
+            }
+            &:after{
+                content: '|';
+                display: inline-block;
+                margin: 0 1em;
+                color: #888888;
+            }
+            &:hover{
+                font-weight: bold;
+            }
+            &:last-child{
+                &:after{
+                    content: ''
+                }
+            }
+
+        }
+    }
+}
+
+#footer{
+    color: #444444;
+    padding: 1em;
+    text-align: center;
+}
+
+#main{
+    width: $main_width;
+    margin: 0 auto;
+    padding-top: $padding_top;
+}
+
+.sub{
+    margin-bottom: 2em;
+}
+
+.sub-title{
+    font-size: 22px;
+    border-left: solid 10px #DDDDDD;
+    background: #EFEFFE;
+    padding: 10px;
+}
+
+.sub-block{
+    margin: .5em;
+}
+
+.item-block{
+    margin: .5em;
+    font-size: 1.2em;
+    line-height: 1.5em;
+    vertical-align: bottom;
+}
+
+
+.question{
+    color: #FF0000;
+    text-align: center;
+    vertical-align: middle;
+    background: #FFEEEE;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 50%;
+    width: 1em;
+    height: 1em;
+    line-height: 1em;
+    border: solid thin #EE0000;
+    display: inline-block;
+    margin: 0 .2em;
+    cursor: pointer;
+    vertical-align: middle;
+    &:hover{
+        background: #EE0000;
+        color: #FFFF00;
+    }
+}
+
+.bordered{
+    border:solid 2px #DDDDDD;
+    &[data-selected=true]{
+        border: solid 2px #0000FF;
+    }
+}
+
+.margin-block{
+    margin: 1em 0;
+}
+
+.half-width-inline-block{
+    width: calc(50% - 2px);
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 1em;
+    overflow-y: scroll;
+    @include thin-scrollbar;
+}
+
+.text-center{
+    text-align: center;
+}
+
+@mixin list{
+    margin: 0;
+    background: #F9F9F9;
+    padding: 0 0 1em 0;
+    margin-bottom: 1em;
+    list-style: none;
+    box-shadow: 0 0 5px #DDDDDD;
+
+    li {
+        width: 100%;
+        border-bottom: dotted thin #999999;
+        padding: .5em;
+        box-sizing: border-box;
+
+        &[data-role=item]{
+            cursor: pointer;
+
+            &:nth-child(odd){
+                background: #FEFEFE;
+            }
+            &:hover{
+                background: #DDDDFD;
+            }
+
+            &.list-item-disabled{
+                background: #FFCCCC;
+            }
+        }
+        &[data-role=info]{
+            text-align: center;
+        }
+        &[data-role=new-line]{
+
+        }
+    }
+}
+
+.list-title{
+    border-bottom: solid thin #AAAAAA;
+}
+
+.list-header{
+    padding: .5em .5em 0 .5em;
+    border-bottom: solid thin #AAAAAA;
+    box-sizing: border-box;
+    font-size: .9em;
+    user-select: none;
+    *[data-role=select-all-btn]{
+        color: blue;
+        cursor: pointer;
+        &:hover{
+            color: red;
+        }
+    }
+}
+
+.list-op-btn-group{
+    float: right;
+    user-select: none;
+    .list-op-btn{
+        text-decoration: none;
+        color: #777777;
+        cursor: pointer;
+        border-right: solid thin #AAAAAA;
+        display: inline-block;
+        text-align: center;
+        padding: 0 .3em;
+        &:hover{
+            color: #000000;
+        }
+        &:last-child{
+            border-right: none;
+        }
+    }
+    &:after{
+        content: ' ';
+        display: block;
+        height: 0;
+        clear: both;
+    }
+}
+
+.white-black-list{
+    @include list;
+    height: 250px;
+    overflow-y: scroll;
+    @include thin-scrollbar;
+    font-size: .9em;
+}
+
+.exception-list{
+    @include list;
+    height: 150px;
+    overflow-y: scroll;
+    @include thin-scrollbar;
+    font-size: .9em;
+}
+
+.list-column{
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+    text-align: center;
+    vertical-align: bottom;
+    user-select: none;
+    &[data-field=name]{
+        width: 7em;
+    }
+    &[data-field=type]{
+        width: 5em;
+    }
+    &[data-field=url]{
+        width: calc(100% - 7em - 5em - 3em - 1em);
+    }
+    &[data-field=select]{
+        width: 3em;
+    }
+}
+
+input[data-role=add-ctrl], select[data-role=add-ctrl], input[data-role=edit-ctrl], select[data-role=edit-ctrl]{
+    text-align: center;
+    display: inline-block;
+    box-sizing: border-box;
+    width: calc(100% - 4px);
+}
+
+input[data-role=search-input]{
+    display: inline-block;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    border: solid thin #444444;
+    padding: .2em .5em;
+    margin: 0 1em;
+    text-align: center;
+    &:focus{
+        border: solid thin #0066FF;
+        box-shadow: 0 0 5px #0066FF;
+    }
+}
+
+#list-search-input{
+    width: 400px;
+}
+
+.msg-popup{
+    position: absolute;
+    width: 60%;
+    left: 20%;
+    top: 40%;
+    padding: 1em;
+    border-radius: 5px;
+    text-align: center;
+    white-space: pre-wrap;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+}

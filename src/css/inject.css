@@ -1,0 +1,167 @@
+.hidden{
+    display: none;
+}
+
+.docgaga-op-menu{
+    position: absolute;
+    z-index: 99999;
+    margin: 0;
+    padding: 0;
+    background: none !important;
+    font-size: 1rem;
+    font-weight: normal;
+    color: #000000 !important;
+    border: none;
+}
+
+.docgaga-op-menu div{
+    display: block;
+    vertical-align: bottom;
+    min-height: 0;
+    min-width : 0;
+    min-height: 0;
+    font-weight: normal;
+    text-align: left;
+    background: none !important;
+    color: #000000 !important;
+    outline: none;
+}
+
+.docgaga-op-menu a[class].docgaga-op-btn{
+    padding: 0.5rem 0.7rem;
+    margin-right: 0.1rem;
+    text-decoration: none;
+    border-radius: 0.3rem;
+    color: #FFFFFF !important;
+    font-size: 1rem;
+    transition: .25s;
+}
+
+.docgaga-op-menu a[class].docgaga-op-btn:hover{
+    text-decoration: none;
+    opacity: 0.9;
+    cursor: pointer;
+    box-shadow: 0 0 3px #000000;
+    color: #FFFFFF !important;
+}
+
+.docgaga-op-menu a[class].docgaga-op-btn.docgaga-translate-btn{
+    background: #0066FF !important;    
+}
+
+.docgaga-op-menu a[class].docgaga-op-btn.docgaga-note-btn{
+    background: #00BB88 !important;
+}
+
+.docgaga-result-panel{
+    margin: 0;
+    padding: 0;
+    color: #000000 !important;
+    font-size: 1rem;
+    font-weight: normal;
+    position: absolute;
+    background: #FFFFFF !important;
+    box-shadow: 0 2px 6px #666666;
+    overflow: hidden;
+    min-width: 15rem;
+    max-width: 25rem;
+    z-index: 99999;
+}
+
+.docgaga-result-panel .docgaga-result-panel-close-btn{
+    position: absolute;
+    top: 0.1rem;
+    right: 0.5rem;
+}
+
+.docgaga-result-panel .docgaga-result-panel-close-btn a{
+    color: #888888 !important;
+    text-decoration: none;
+    transition: .25s;
+}
+
+.docgaga-result-panel .docgaga-result-panel-close-btn a:hover{
+    color: #222222 !important;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.docgaga-result-panel *{
+    margin: 0;
+    padding: 0;
+    color: #000000 !important;
+    background: none !important;
+    font-size: 1rem;
+    font-weight: normal;
+    border: none;
+}
+
+.docgaga-result-panel .docgaga-result-panel-header{
+    box-shadow: 0 0 5px #CCCCCC;
+    border-bottom: solid 2px #DDDDDD;
+    z-index: 999998;
+    background: #F8F8F8 !important;
+    overflow-y: scroll;
+    max-height: 6rem;
+    word-wrap: break-word;
+    font-size: .9rem;
+    padding: 0.5rem 1.3rem 0.3rem 0.5rem;
+}
+
+.docgaga-result-panel .docgaga-result-panel-footer{
+    box-shadow: 0 0 5px #CCCCCC;
+    padding: 0.3rem;
+    font-weight: bold;
+    z-index: 999998;
+    background: #F8F8F8 !important;
+}
+
+.docgaga-result-panel .docgaga-result-panel-content{
+    width: inherit;
+    min-height: 80px;
+    max-height: 300px;
+    padding: 1rem;
+    overflow-y: scroll;
+    white-space: break-all;
+    z-index: 999997;
+    background: #FDFDFD !important;
+}
+
+.docgaga-result-panel .docgaga-result-panel-content.docgaga-result-panel-error-msg{
+    color: #FF0000 !important;
+}
+
+.docgaga-result-panel .docgaga-result-panel-footer-logo{
+    float: left;
+    font-weight: bold;
+    font-family: Arial Black;
+}
+
+.docgaga-result-panel .docgaga-result-panel-footer-search-btn{
+    float: right;
+}
+
+.docgaga-result-panel .docgaga-result-panel-footer-search-btn:hover{
+    float: right;
+}
+
+.docgaga-result-panel .docgaga-result-panel-footer-search-btn a{
+    font-size: 1rem;
+    color: #0066FF !important;
+    text-decoration: none;
+}
+
+.docgaga-result-panel .docgaga-result-panel-footer-search-btn a:hover{
+    color: #0000FF !important;
+    text-decoration: none;
+}
+
+.docgaga-result-panel-header::-webkit-scrollbar,.docgaga-result-panel-content::-webkit-scrollbar{
+    width: 0.3rem;
+    height: 0.3rem;
+    background: #EEEEEE !important;
+}
+
+.docgaga-result-panel-header::-webkit-scrollbar-thumb,.docgaga-result-panel-content::-webkit-scrollbar-thumb{
+    background: #888888 !important;
+}

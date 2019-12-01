@@ -1,0 +1,489 @@
+@charset "UTF-8";
+@import '../utils/customization.scss';
+
+$theme-lizzy-color-primary: #2d9afa;
+$theme-lizzy-color-primary-hover: #2a88e8;
+$theme-lizzy-color-primary-active: #1a77d7;
+$theme-lizzy-color-danger: #FF0000;
+$theme-lizzy-color-danger-hover: #EE0000;
+$theme-lizzy-color-danger-active: #DD0000;
+$theme-lizzy-color-success: #22DD22;
+$theme-lizzy-color-success-hover: #11CC11;
+$theme-lizzy-color-success-active: #00BB00;
+$theme-lizzy-plain-bg-color: #FFFFFF;
+$theme-lizzy-light-bg-color: #F2F2FF;
+$theme-lizzy-light-bg-color-hover: #DDDDEE;
+$theme-lizzy-light-bg-color-active: #CCCCDD;
+$theme-lizzy-lighter-bg-color: #F6F6FF;
+$theme-lizzy-footer-color-primary: #F6F6FF;
+$theme-lizzy-gray-border-color: #CCCCCC;
+$theme-lizzy-text-color-primary: #000000;
+$theme-lizzy-text-color-secondary: #999999;
+$theme-lizzy-color-warn: orange;
+
+@mixin keyword-select($scale){
+    a{
+        font-family: "DocGaga Material Icons" !important;
+        font-size: calc(16px * #{$scale}) !important;
+        color: $theme-lizzy-color-primary !important;
+    }
+    .docgaga-keyword-select-error-info{
+        left: 4px !important;
+        border-radius: 4px !important;
+        box-shadow: 0 0 5px $theme-lizzy-color-warn !important;
+        background: $theme-lizzy-plain-bg-color !important;
+        span{
+            color: $theme-lizzy-color-warn !important;
+            line-height: 26px !important;
+        }
+    }
+    .docgaga-keyword-select-cand-list{
+        *[data-role=header]{
+            box-sizing: border-box !important;
+            height: calc(2.2em * #{$scale}) !important;
+            width: 100% !important;
+            line-height: calc(2.2em * #{$scale}) !important;
+            background: $theme-lizzy-lighter-bg-color !important;
+            a[data-role=close]{
+                height: 100% !important;
+                box-sizing: border-box !important;
+                color: $theme-lizzy-color-danger !important;
+                &:hover{
+                    color: $theme-lizzy-color-danger-hover !important;
+                }
+                &:active{
+                    color: $theme-lizzy-color-danger-active !important;
+                }
+            }
+            *[data-role=title]{
+                height: 100% !important;
+                box-sizing: border-box !important;
+                padding: 0 1em !important;
+                font-size: calc(.95em * #{$scale}) !important;
+                line-height: calc(2em * #{$scale}) !important;
+            }
+        }
+        *[data-role=info]{
+            margin-top: calc(2.5em * #{$scale}) !important;
+        }
+        ul{
+            .docgaga-keyword-select-cand-list-item{
+                font-family: "Monospace" !important;
+                font-size: calc(14px * #{$scale}) !important;
+                margin-right: calc(14px * #{$scale}) !important;
+                border-bottom: dotted thin $theme-lizzy-plain-bg-color !important;
+                &:hover{
+                    color: $theme-lizzy-color-primary !important;
+                    border-bottom: dotted thin $theme-lizzy-color-primary !important;
+                }
+            }
+        }
+    }
+    .docgaga-keyword-select-list{
+        a, input, span{
+            padding: calc(4px * #{$scale}) calc(5px * #{$scale}) !important;
+            height: calc(100% * #{$scale}) !important;
+            line-height: calc(17px * #{$scale}) !important;
+            box-sizing: border-box !important;
+            background: $theme-lizzy-plain-bg-color !important;
+        }
+        
+        a[data-role=toggle]{
+            height: calc(26px * #{$scale}) !important;
+            border: solid thin $theme-lizzy-gray-border-color !important;
+            bottom: calc(8px * #{$scale}) !important;
+            right: 6px !important;
+        }
+
+        &.docgaga-keyword-select-list-collapsed{
+            a[data-role=toggle]{
+                top: 0px !important;
+            }
+        }
+
+        li{
+            margin: 0 !important;
+            box-sizing: border-box !important;
+            padding: 0px calc(5px * #{$scale}) !important;
+            box-sizing: border-box !important;
+            margin-bottom: calc(8px * #{$scale}) !important;
+            &[data-role=tip]{
+                font-size: calc(15px * #{$scale}) !important;
+                line-height: calc(26px * #{$scale}) !important;
+                color: $theme-lizzy-text-color-secondary !important;
+            }
+            a[data-role=add]{
+                border-radius: 4px !important;
+                &:hover{
+                    color: $theme-lizzy-color-primary-hover !important;
+                }
+            }
+            a[data-role=add-confirm], a[data-role=edit-confirm]{
+                color: $theme-lizzy-color-success !important;
+            }
+            a[data-role=delete], a[data-role=add-cancel], a[data-role=edit-cancel]{
+                color: $theme-lizzy-color-danger !important;
+            }
+            a[data-role=delete], a[data-role=add-cancel], a[data-role=edit-cancel]{
+                border-radius: 0 4px 4px 0 !important;
+            }
+            input{
+                font-size: calc(14px * #{$scale}) !important;
+                font-family: "Arial" !important;
+                background: $theme-lizzy-lighter-bg-color !important;
+                border-radius: 4px 0 0 4px !important;
+            }
+            span[data-role=keyword]{
+                font-size: calc(14px * #{$scale}) !important;
+                border-radius: 4px 0 0 4px !important;
+                font-family: "Arial" !important;
+                color: $theme-lizzy-color-primary-active !important;
+            }
+        }
+    }
+}
+
+.docgaga-note-panel.theme-lizzy{
+    .docgaga-note-panel-wrapper{
+        .docgaga-note-panel-header{
+            background: $theme-lizzy-color-primary !important;
+            color: $theme-lizzy-plain-bg-color !important;
+            span{
+                color: $theme-lizzy-plain-bg-color !important;
+            }
+            a.docgaga-note-panel-layout-btn{
+                &:hover, &.docgaga-note-panel-locate-btn:hover{
+                    background: $theme-lizzy-color-primary-hover !important;
+                    box-shadow: none !important;
+                }
+                &:active, &.docgaga-note-panel-locate-btn:active{
+                    background: $theme-lizzy-color-primary-active !important;
+                    box-shadow: none !important;
+                }
+            }
+        }
+        .docgaga-note-panel-type-select-list{
+            .docgaga-ui-selectable-list{
+                .docgaga-ui-selectable-list-item{
+                    border-radius: 4px !important;
+                    padding-left: .5em !important;
+                    padding-right: .5em !important;
+                    img[data-role=icon]{
+                        display: none !important;
+                    }
+                    &:hover{
+                        border: solid thin $theme-lizzy-color-primary !important;
+                        span[data-role=content]{
+                            color: $theme-lizzy-color-primary !important;
+                        }
+                    }
+                    &.docgaga-ui-selectable-list-item-selected{
+                        border: solid thin $theme-lizzy-color-primary !important;
+                        background: $theme-lizzy-color-primary !important;
+                        img[data-role=icon]{
+                            display: none !important;
+                        }
+                        span[data-role=icon]{
+                            color: $theme-lizzy-plain-bg-color !important;
+                        }
+                        span[data-role=content]{
+                            color: $theme-lizzy-plain-bg-color !important;
+                        }
+                    }
+                }
+            }
+        }
+        .docgaga-note-panel-footer{
+            background: $theme-lizzy-footer-color-primary !important;
+            div[data-role=info]{
+                background: $theme-lizzy-color-primary !important;
+                height: 26px;
+                margin-top: 4px;
+                margin-left: 4px;
+                user-select: none;
+                cursor: pointer;
+                color: $theme-lizzy-plain-bg-color !important;
+                &:hover{
+                    background: $theme-lizzy-color-primary-hover !important;
+                }
+                &:active{
+                    background: $theme-lizzy-color-primary-active !important;
+                }
+                a{
+                    color:$theme-lizzy-plain-bg-color !important;
+                }
+                a:hover{
+                    color: $theme-lizzy-plain-bg-color !important;
+                }
+                a:active{
+                    color: $theme-lizzy-plain-bg-color !important;
+                }
+            }
+            .docgaga-note-panel-op-btn{
+                border-radius: 4px;
+                height: 15px;
+                padding-top: 6px;
+                margin-right: 8px;
+                &.docgaga-note-panel-delete-btn{
+                    background: $theme-lizzy-color-danger !important;
+                    &:hover{
+                        background: $theme-lizzy-color-danger-hover !important;
+                    }
+                    &:active{
+                        background: $theme-lizzy-color-danger-active !important;
+                    }
+                }
+                &.docgaga-note-panel-save-btn{
+                    background: $theme-lizzy-color-primary !important;
+                    &:hover{
+                        background: $theme-lizzy-color-primary-hover !important;
+                    }
+                    &:active{
+                        background: $theme-lizzy-color-primary-active !important;
+                    }
+                }
+            }
+        }
+        .docgaga-note-panel-main {
+            .docgaga-note-panel-text-panel{
+                .docgaga-note-panel-text-content{
+                    background: $theme-lizzy-lighter-bg-color !important;
+                }
+            }
+            &.docgaga-note-panel-text-collapsed{
+                .docgaga-note-panel-text-toggle-btn{
+                    .docgaga-note-panel-text-title{
+                        background: $theme-lizzy-light-bg-color !important;
+                    }
+                }
+            }
+            .docgaga-note-panel-note-panel{
+                .docgaga-note-panel-textarea:focus{
+                    box-shadow: 0 0 3px $theme-lizzy-color-primary !important;
+                }
+            }
+        }
+        .docgaga-keyword-select{
+            @include keyword-select(1);
+        }
+    }
+}
+.docgaga-note-list-panel.theme-lizzy{
+    &.docgaga-note-list-panel-collapsed{
+        .docgaga-note-list-wrapper{
+            .docgaga-note-list-header{
+                background: $theme-lizzy-color-danger !important;
+                .docgaga-note-list-panel-toggle-btn{
+                    font-family: "黑体" !important;
+                    font-weight: bold !important;
+                    &:hover{
+                        background: $theme-lizzy-color-danger-hover !important;
+                    }
+                    &:active{
+                        background: $theme-lizzy-color-danger-active !important;
+                    }
+                }
+            }
+        }
+    }
+    .docgaga-note-list-wrapper{
+        .docgaga-note-list-header{
+            background: $theme-lizzy-color-primary !important;
+            .docgaga-note-list-panel-toggle-btn{
+                font-family: "DocGaga Material Icons" !important;
+                font-size: 16px !important;
+                height: 100% !important;
+                box-sizing: border-box !important;
+                &:hover{
+                    background: $theme-lizzy-color-primary-hover !important;
+                }
+                &:active{
+                    background: $theme-lizzy-color-primary-active !important;
+                }
+            }
+            .docgaga-note-list-title{
+                box-sizing: border-box !important;
+                height: 100% !important;
+                line-height: 27px !important;
+                a[data-role=login-btn]{
+                    color: #FFFF00 !important;
+                }
+            }
+        }
+        
+        .docgaga-note-list-control-panel{
+            background: $theme-lizzy-light-bg-color !important;
+            .docgaga-note-list-control-panel-toggle-btn{
+                font-family: "DocGaga Material Icons" !important;
+                display: none !important;
+            }
+            ul.docgaga-note-list-tabs{
+                width: 100%;
+                text-align: center;
+                white-space: nowrap;
+                overflow-x: auto;
+                @include thin-scrollbar;
+                li{
+                    padding: 0 .2em !important;
+                    border-bottom: solid 2px $theme-lizzy-light-bg-color;
+                    &:hover{
+                        background: $theme-lizzy-color-primary !important;
+                        border-bottom: solid 2px $theme-lizzy-color-primary !important;
+                        span[data-role=count]{
+                            color: $theme-lizzy-plain-bg-color !important;
+                        }
+                        img[data-role=icon]{
+                            display: none !important;
+                        }
+                        span[data-role=icon]{
+                            &[data-id=t_m], &[data-id=t_n], &[data-id=t_q], &[data-id=t_d], &[data-id=t_t], &[data-id=t_a]{
+                                font-size: 1.1em !important;
+                                color: $theme-lizzy-plain-bg-color !important;
+                            }
+                        }
+                    }
+                    &.docgaga-note-list-tab-selected{
+                        border-bottom: solid 2px $theme-lizzy-color-primary !important;
+                    }
+                    span[data-role=count]{
+                        display: inline-block !important;
+                        width: 1.5em !important;
+                        text-align: center;
+                        box-shadow: 5px 0 -2px black;
+                    }
+                    span[data-role=icon][data-id=t_m]{
+                        color: #FFCC00 !important;
+                    }
+                    span[data-role=icon][data-id=t_n]{
+                        color: #2d9afa !important;
+                    }
+                    span[data-role=icon][data-id=t_q]{
+                        color: #FF4400 !important;
+                    }
+                    span[data-role=icon][data-id=t_t]{
+                        color: #66AA55 !important;
+                    }
+                    span[data-role=icon][data-id=t_d]{
+                        color: #AAAAAA !important;
+                    }
+                    span[data-role=icon][data-id=t_a]{
+                        color: #FF6F00 !important;
+                    }
+                }
+                
+            }
+        }
+        div.docgaga-note-list-filter{
+            background: $theme-lizzy-lighter-bg-color !important;
+            a[data-role=toggle-advanced]{
+                font-family: "DocGaga Material Icons" !important;
+                box-sizing: border-box !important;
+                line-height: 2em !important;
+                height: 100% !important;
+                &:hover{
+                    background: $theme-lizzy-light-bg-color-hover !important;
+                }
+                &:active{
+                    background: $theme-lizzy-light-bg-color-active !important;
+                }
+            }
+            div[data-role=search-bar]{
+                input[data-role=search-input]{
+                    &:focus{
+                        box-shadow: 0 0 3px orange !important;
+                    }
+                }
+            }
+            div[data-role=advanced-filter]{
+                div[data-role=keyword-select-block]{
+                    div[data-role=block-title]{
+                        padding: .3em .5em !important;
+                        border-left: solid 4px $theme-lizzy-color-primary !important;
+                    }    
+                    div[data-role=block-content]{
+                        padding-top: 4px !important;
+                        @include keyword-select(0.9);
+                        .docgaga-keyword-select{
+                            .docgaga-keyword-select-list{
+                                background: none !important;
+                                li{
+                                    span[data-role=keyword]{
+                                        border-radius: 4px !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }   
+        }
+        .docgaga-note-list-footer{
+            background: $theme-lizzy-footer-color-primary !important;
+            .docgaga-note-list-footer-info{
+                color: $theme-lizzy-plain-bg-color !important;
+                background: $theme-lizzy-color-primary !important;
+                padding: 0 1em !important;
+                height: calc(100% - 3px) !important;
+                margin-top: 3px !important;
+                min-width: 8em !important;
+                text-align: center !important;
+            }
+            .docgaga-note-list-panel-footer-btn{
+                &[data-role=refresh], &[data-role=filter]{
+                    font-family: "DocGaga Material Icons" !important;
+                    background: none;
+                    color: $theme-lizzy-color-primary !important;
+                    &:hover{
+                        background: $theme-lizzy-color-primary !important;
+                        color: $theme-lizzy-plain-bg-color !important;
+                    }
+                    &:active{
+                        background: $theme-lizzy-color-primary-hover !important;
+                        color: $theme-lizzy-plain-bg-color !important;
+                    }
+                    &.docgaga-note-list-footer-btn-active{
+                        color: $theme-lizzy-plain-bg-color !important;
+                        background: $theme-lizzy-color-primary !important;
+                    }
+                }
+            }
+        }
+
+        .docgaga-note-list-menu{
+            ul{
+                li{
+                    font-family: "DocGaga Material Icons" !important;
+                    background: $theme-lizzy-color-primary !important;
+                    line-height: calc(2em + 2px) !important;
+                    &:hover{
+                        background: $theme-lizzy-color-primary-hover !important;
+                    }
+                    &:active{
+                        background: $theme-lizzy-color-primary-active !important;
+                    }
+                }
+            }
+        }
+
+        .docgaga-note-list{
+            .docgaga-note-list-item{
+                &:hover{
+                    background: $theme-lizzy-color-primary !important;
+                    .docgaga-note-list-item-title{
+                        img[data-role=icon]{
+                            display: none !important;
+                        }
+                        span[data-role=icon]{
+                            color: $theme-lizzy-plain-bg-color !important;
+                        }
+                    }
+                    *[data-role=extra-info]{
+                        a:hover{
+                            color: #FFFF00 !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

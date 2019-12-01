@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>汤圆笔记浏览器插件 - 设置</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="css/settings.css"/>
+    </head>
+    <body>
+        <div id="main">
+            <div id="header">
+                <div id="header-title">
+                    <span style="color: #FFAA00;">汤</span>
+					<span style="color: #00EEAA;">圆</span>
+					<span style="color: #DDAA22;">笔</span>
+					<span style="color: #0055EE;">记</span>
+					<span style="font-size: 80%;">浏览器插件</span>
+                    <span style="color: #444444;">- 设置</span>
+                </div>
+                <div id="control-btn-group">
+                    <button data-role="restore-btn">恢复默认</button>
+                    <button data-role="cancel-btn">撤销本次修改</button>
+                    <button data-role="save-btn">保存修改并生效</button>
+                </div>    
+            </div>
+            <div class="sub">
+                <div class="sub-title">基本信息</div>
+                <div class="sub-block">
+                    <div class="item-block">
+                        <label>插件版本:</label>
+                        <span class="setting-value" data-setting="docgaga.version"></span>
+                    </div>
+                    <div class="item-block">
+                        <label>当前配置更新于:</label>
+                        <span class="setting-value" data-setting="settings.last_update_time"></span>
+                    </div>
+                    <div class="item-block">
+                        <label data-role="setting-name">使用 本地/在线 配置</label>
+                        <select class="setting-value" data-setting="settings.use_local">
+                            <option value="true">本地</option>
+                            <option value="false">在线</option>
+                        </select>
+                        <span class="question" data-setting="settings.use_local">?</span>
+                    </div>
+                    <div class="item-block">
+                        └─
+                        <input type="checkbox" class="setting-value" data-setting="settings.auto_sync"/>
+                        <label>自动与在线配置同步</label>
+                        <span class="question" data-setting="settings.auto_sync">?</span>
+                    </div>
+                </div>
+            </div>
+            <div class="sub">
+                <div class="sub-title">功能配置</div>
+                <div class="sub-block">
+                    <div class="item-block">
+                        <input type="checkbox" class="setting-value" data-setting="auto_open_note_list"/>
+                        <label>默认展开笔记列表</label>
+                        <span class="question" data-setting="auto_open_note_list">?</span>
+                    </div>
+                    <div class="item-block">
+                        <input type="checkbox" class="setting-value" data-setting="refresh_on_open"/>
+                        <label>展开笔记列表时自动刷新列表</label>
+                        <span class="question" data-setting="refresh_on_open">?</span>
+                    </div>
+                    <div class="item-block">
+                        <input type="checkbox" class="setting-value" data-setting="auto_search_note"/>
+                        <label>打开页面时自动查找当前页面记过的笔记</label>
+                        <span class="question" data-setting="auto_search_note">?</span>
+                    </div>
+                    <div class="item-block">
+                        └─
+                        <input type="checkbox" class="setting-value" data-setting="auto_open_when_note_found"/>
+                        <label>如果当前页面有记过的笔记，自动展开笔记列表</label>
+                        <span class="question" data-setting="auto_open_when_note_found">?</span>
+                    </div>
+                    <div class="item-block">
+                        <label>页面第一次查找笔记时，如果当前页面没有记过笔记，尝试扩大查找范围至：</label>
+                        <select class="setting-value" data-setting="expand_search_scope_to">
+                            <option value="none">不继续查找</option>
+                            <option value="site">在当前网站记过的笔记</option>
+                            <option value="all">所有记过的笔记</option>
+                        </select>
+                        <span class="question" data-setting="expand_search_scope_to">?</span>
+                    </div>
+                </div>
+            </div>
+            <div class="sub">
+                <div class="sub-title">启动配置</div>
+                <div class="sub-block">
+                    <div class="item-block">
+                        <input type="checkbox" class="setting-value" data-setting="enable_blacklist"/>
+                        <label>启用黑名单</label>
+                        <span class="question" data-setting="enable_blacklist">?</span>
+                        <input type="checkbox" class="setting-value" data-setting="enable_whitelist"/>
+                        <label>启用白名单</label>
+                        <span class="question" data-setting="enable_whitelist">?</span>
+                        <input id="list-search-input" data-role="search-input" placeholder="筛选: 名称、类型、网址、规则匹配"/>
+                        <div class="margin-block">
+                            <div data-role="list-wrapper" data-type="blacklist" class="half-width-inline-block bordered">
+                                <div data-acl="blacklist">
+                                    <div>
+                                        <span class="list-title">黑名单</span>
+                                        (<span class="item-count">0</span>)
+                                        <span class="question" data-setting="blacklist">?</span>
+                                        <div class="list-op-btn-group" data-role="general">
+                                            <a class="list-op-btn" data-role="add-btn">添加</a>
+                                            <a class="list-op-btn" data-role="delete-btn">删除</a>
+                                            <a class="list-op-btn" data-role="enable-btn">停用/启用</a>
+                                        </div>
+                                        <div class="list-op-btn-group" data-role="add">
+                                            <a class="list-op-btn" data-role="confirm-add-btn">确定添加</a>
+                                            <a class="list-op-btn" data-role="cancel-add-btn">取消</a>
+                                        </div>
+                                        <div class="list-op-btn-group" data-role="edit">
+                                            <a class="list-op-btn" data-role="confirm-edit-btn">确定修改</a>
+                                            <a class="list-op-btn" data-role="cancel-edit-btn">撤销</a>
+                                        </div>
+                                    </div>
+                                    <div class="list-header">
+                                        <span class="list-column" data-field="select">
+                                            <a data-role="select-all-btn">全选</a>
+                                        </span>                                        
+                                        <span class="list-column" data-field="name">名称</span>
+                                        <span class="list-column" data-field="type">类型</span>
+                                        <span class="list-column" data-field="url">网址</span>
+                                    </div>
+                                    <ul class="white-black-list">
+                                        <li data-role="info" data-info="empty-list">暂无记录</li>
+                                        <li data-role="info" data-info="no-match">找不到匹配的结果</li>
+                                    </ul>
+                                </div>
+                                <div data-acl="blacklist-exception">
+                                    <div>
+                                        <span class="list-title">黑名单特殊情况(excludes)</span>
+                                        (<span class="item-count">0</span>)
+                                        <span class="question" data-setting="blacklist_exceptions">?</span>
+                                        <div class="list-op-btn-group" data-role="general">
+                                            <a class="list-op-btn" data-role="add-btn">添加</a>
+                                            <a class="list-op-btn" data-role="delete-btn">删除</a>
+                                            <a class="list-op-btn" data-role="enable-btn">停用/启用</a>
+                                        </div>
+                                        <div class="list-op-btn-group" data-role="add">
+                                            <a class="list-op-btn" data-role="confirm-add-btn">确定添加</a>
+                                            <a class="list-op-btn" data-role="cancel-add-btn">取消</a>
+                                        </div>
+                                        <div class="list-op-btn-group" data-role="edit">
+                                            <a class="list-op-btn" data-role="confirm-edit-btn">确定修改</a>
+                                            <a class="list-op-btn" data-role="cancel-edit-btn">撤销</a>
+                                        </div>
+                                    </div>
+                                    <div class="list-header">
+                                        <span class="list-column" data-field="select">
+                                            <a data-role="select-all-btn">全选</a>
+                                        </span>                                        
+                                        <span class="list-column" data-field="name">名称</span>
+                                        <span class="list-column" data-field="type">类型</span>
+                                        <span class="list-column" data-field="url">网址</span>
+                                    </div>
+                                    <ul class="exception-list">
+                                        <li data-role="info" data-info="empty-list">暂无记录</li>
+                                        <li data-role="info" data-info="no-match">找不到匹配的结果</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div data-role="list-wrapper" data-type="whitelist" class="half-width-inline-block bordered">
+                                <div data-acl="whitelist">
+                                    <div>
+                                        <span class="list-title">白名单</span>
+                                        (<span class="item-count">0</span>)
+                                        <span class="question" data-setting="whitelist">?</span>
+                                        <div class="list-op-btn-group" data-role="general">
+                                            <a class="list-op-btn" data-role="add-btn">添加</a>
+                                            <a class="list-op-btn" data-role="delete-btn">删除</a>
+                                            <a class="list-op-btn" data-role="enable-btn">停用/启用</a>
+                                        </div>
+                                        <div class="list-op-btn-group" data-role="add">
+                                            <a class="list-op-btn" data-role="confirm-add-btn">确定添加</a>
+                                            <a class="list-op-btn" data-role="cancel-add-btn">取消</a>
+                                        </div>
+                                        <div class="list-op-btn-group" data-role="edit">
+                                            <a class="list-op-btn" data-role="confirm-edit-btn">确定修改</a>
+                                            <a class="list-op-btn" data-role="cancel-edit-btn">撤销</a>
+                                        </div>
+                                    </div>
+                                    <div class="list-header">
+                                        <span class="list-column" data-field="select">
+                                            <a data-role="select-all-btn">全选</a>
+                                        </span>                                                                                
+                                        <span class="list-column" data-field="name">名称</span>
+                                        <span class="list-column" data-field="type">类型</span>
+                                        <span class="list-column" data-field="url">网址</span>
+                                    </div>
+
+                                    <ul class="white-black-list">
+                                        <li data-role="info" data-info="empty-list">暂无记录</li>
+                                        <li data-role="info" data-info="no-match">找不到匹配的结果</li>
+                                    </ul>
+                                </div>
+                                <div data-acl="whitelist-exception">
+                                    <div>
+                                        <span class="list-title">白名单特殊情况(excludes)</span>
+                                        (<span class="item-count">0</span>)
+                                        <span class="question" data-setting="whitelist_exceptions">?</span>
+                                        <div class="list-op-btn-group" data-role="general">
+                                            <a class="list-op-btn" data-role="add-btn">添加</a>
+                                            <a class="list-op-btn" data-role="delete-btn">删除</a>
+                                            <a class="list-op-btn" data-role="enable-btn">停用/启用</a>
+                                        </div>
+                                        <div class="list-op-btn-group" data-role="add">
+                                            <a class="list-op-btn" data-role="confirm-add-btn">确定添加</a>
+                                            <a class="list-op-btn" data-role="cancel-add-btn">取消</a>
+                                        </div>
+                                        <div class="list-op-btn-group" data-role="edit">
+                                            <a class="list-op-btn" data-role="confirm-edit-btn">确定修改</a>
+                                            <a class="list-op-btn" data-role="cancel-edit-btn">撤销</a>
+                                        </div>
+                                    </div>
+                                    <div class="list-header">
+                                        <span class="list-column" data-field="select">
+                                            <a data-role="select-all-btn">全选</a>
+                                        </span>                                                                                
+                                        <span class="list-column" data-field="name">名称</span>
+                                        <span class="list-column" data-field="type">类型</span>
+                                        <span class="list-column" data-field="url">网址</span>
+                                    </div>
+
+                                    <ul class="exception-list">
+                                        <li data-role="info" data-info="empty-list">暂无记录</li>
+                                        <li data-role="info" data-info="no-match">找不到匹配的结果</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="footer">
+                Copyright&copy;2017 DOCGAGA.IEGO.NET All Rights Reserved.
+            </div>
+        </div>
+        <script src="lib/common.js"></script>
+        <script src="js/settings-page.js"></script>
+    </body>
+</html>

@@ -1,0 +1,400 @@
+@charset "UTF-8";
+@import "../utils/customization.scss";
+
+$note-panel-default-width: 400px;
+$note-panel-default-height: 380px;
+
+$note-panel-text-panel-v-margin: 0.2em;
+$note-panel-text-panel-h-margin: 0.3em;
+$note-panel-text-panel-padding: 0.25em;
+
+$note-panel-title-font-size: 0.9em;
+
+$note-panel-set-top-width: 80%;
+$note-panel-set-top-height: 250px;
+$note-panel-set-top-margin-top: 1em;
+
+$note-panel-max-width: 80%;
+$note-panel-max-height: 80%;
+
+$note-panel-bg-color: #FEFEFE;
+
+$note-panel-header-height: 1.8em;
+$note-panel-footer-height: 2em;
+
+$note-panel-footer-op-btn-font-size: 0.9em;
+$note-panel-footer-op-btn-line-height: 1;
+$note-panel-footer-op-btn-margin-top: 0.3em;
+$note-panel-footer-op-btn-padding-top: ($note-panel-footer-height - $note-panel-footer-op-btn-font-size - $note-panel-footer-op-btn-margin-top * 2) / 2;
+
+$note-panel-title-height: 1.5em;
+
+$panel-separator: solid 1px #CCCCCC;
+
+$note-panel-keyword-select-height: 30px;
+
+@mixin note-panel-default{
+  position: fixed;
+  width: $note-panel-default-width;
+  height: $note-panel-default-height;
+  box-shadow: 0 0 5px #222222;
+  z-index: $float-panel-z-index;
+  background: $note-panel-bg-color !important;
+  display: none;
+  .docgaga-note-panel-wrapper{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    .docgaga-note-panel-header{
+      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: calc(#{$note-panel-header-height} - 1px);
+      background: $default-theme-bg-color !important;
+      user-select: none;
+      z-index: $float-panel-z-index + 9;
+      overflow: hidden !important;
+      span{
+        margin-left: .5em;
+        line-height: calc(#{$note-panel-header-height} - 1px);
+        color: $default-theme-font-color !important;
+        }
+      span[data-role=docgaga-note-panel-title]{
+        display: inline-block !important;
+        max-width: calc(100% - 10em) !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap;
+        }
+      span[data-role=docgaga-note-panel-title-icon]{
+        font-family: "DocGaga Material Icons" !important;
+        color: #FFFFFF !important;
+        }
+      .docgaga-note-panel-layout-btn{
+        line-height: calc(#{$note-panel-header-height} - 1px);
+        float: right;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+        color: $default-theme-font-color !important;
+        font-weight: bold;
+        border: none;
+        font-family: "DocGaga Material Icons" !important;
+        &:hover{
+          background: $default-theme-hover-bg-color !important;
+          font-weight: bolder;
+          cursor: pointer;
+          color: $default-theme-hover-font-color !important;
+          }
+        &:active{
+          background: #0011DD !important;
+          }
+        &.docgaga-note-panel-locate-btn{
+          color: #FFFFFF !important;
+          margin-right: 2em;
+          &:hover{
+            background: $default-theme-hover-bg-color !important;
+            box-shadow: 0 0 5px yellow;
+            color: $default-theme-hover-font-color !important;
+            font-weight: bolder;
+            }
+          &:active{
+            background: #0011DD !important;
+            }
+          }
+        }
+      }
+    .docgaga-note-panel-keyword-select{
+      position: absolute;
+      width: 100%;
+      height: $note-panel-keyword-select-height;
+      right: 0;
+      bottom: $note-panel-footer-height;
+      z-index: 99999999;
+      .docgaga-keyword-select{
+        * {
+          @include thin-scrollbar;
+          }
+        }
+      }
+    .docgaga-note-panel-footer{
+      z-index: 99999998;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: $note-panel-footer-height;
+//      text-align: right;
+      background: $default-theme-bg-color !important;
+      &::after{
+        content: ' ';
+        display: block;
+        clear: both;
+        height: 0 !important;
+        }
+      div[data-role=info]{
+        float: left;
+        height: $note-panel-footer-height;
+        margin: 0;
+        padding: 0 .5em;
+        font-size: .9em;
+        line-height: $note-panel-footer-height;
+        color: #FFFFFF !important;
+        a{
+          text-decoration: none;
+          color: #EFEFEF !important;
+          cursor: pointer;
+          line-height: $note-panel-footer-height;
+          &:hover{
+            color: #FFFF00 !important;
+            }
+          &:active{
+            color: #EEEE00 !important;
+            }
+          span[data-role=icon]{
+            font-family: "DocGaga Material Icons" !important;
+            line-height: $note-panel-footer-height;
+            color: #FFFFFF !important;
+            margin-left: .5em !important;
+            }
+          }
+        }
+      .docgaga-note-panel-op-btn{
+        font-size: $note-panel-footer-op-btn-font-size;
+        line-height: $note-panel-footer-op-btn-line-height;
+        padding: calc(#{$note-panel-footer-op-btn-padding-top}) 0.5em;
+        margin: calc(#{$note-panel-footer-op-btn-margin-top}) 0.25em;
+        background: #CFCFCF !important;
+        border-radius: .3em;
+        display: inline-block;
+        border: none;
+        float: right;
+        &.docgaga-note-panel-delete-btn{
+          background: #FF0000 !important;
+          color: #FFFFFF !important;
+          &:hover{
+            background: #EE0000 !important;
+            box-shadow: 0 0 5px #FFFFFF;
+            cursor: pointer;
+            }
+          &:active{
+            background: #DD0000 !important;
+            }
+          }
+        &.docgaga-note-panel-save-btn{
+          background: #000066 !important;
+          color: #FFFFFF !important;
+          &:hover{
+            background: #000044 !important;
+            box-shadow: 0 0 5px #FFFFFF;
+            cursor: pointer;
+            }
+          &:active{
+            background: #000033 !important;
+            }
+          }
+        &.docgaga-note-panel-mark-btn{
+          background: #006600 !important;
+          color: #FFFFFF !important;
+          &:hover{
+            background: #004400 !important;
+            box-shadow: 0 0 5px #FFFFFF;
+            cursor: pointer;
+            }
+          &:active{
+            background: #003300 !important;
+            }
+          }
+        }
+      }
+    .docgaga-note-panel-main{
+      padding-top: $note-panel-header-height;
+      padding-bottom: $note-panel-footer-height;
+      height: calc(100% - #{$note-panel-header-height} - #{$note-panel-footer-height});
+      &.docgaga-note-panel-text-collapsed{
+        .docgaga-note-panel-text-panel{
+          height: $note-panel-title-height;
+          overflow: hidden;
+          .docgaga-note-panel-text-title{
+            background: #EFEFEF !important;
+            }
+          }
+        .docgaga-note-panel-note-panel{
+          height: calc(100% - #{$note-panel-title-height});
+          .docgaga-note-panel-textarea{
+            height: calc(100% - 2.5em - #{$note-panel-keyword-select-height});
+            }
+          }
+        }
+      .docgaga-note-panel-text-panel{
+        width: 100%;
+        height: 40%;
+        .docgaga-note-panel-text-toggle-btn{
+          cursor: pointer;
+          background: none;
+          display: block;
+          &:hover{
+            background: none;
+            }
+          &:active{
+            background: none;
+            }
+          }
+        .docgaga-note-panel-text-title{
+          padding-left: 0.5em;
+          font-size: $note-panel-title-font-size;
+          height: $note-panel-title-height;
+          display: block;
+          }
+        .docgaga-note-panel-text-content{
+          width: calc(100% - #{$note-panel-text-panel-h-margin} * 2 - #{$note-panel-text-panel-padding} * 2);
+          height: calc(100% - #{$note-panel-title-height} - #{$note-panel-text-panel-padding} * 2 - #{$note-panel-text-panel-v-margin} * 2);
+          margin-top: $note-panel-text-panel-v-margin;
+          margin-left: $note-panel-text-panel-h-margin;
+          padding: $note-panel-text-panel-padding;
+          box-shadow: 0 0 2px #DDDDDD;
+          word-wrap: break-word;
+          overflow-y: scroll;
+          background: #F6F6F6 !important;
+          @include thin-scrollbar;
+          }
+        }
+      .docgaga-note-panel-note-panel{
+        width: 100%;
+        height: calc(60% - #{$note-panel-keyword-select-height});
+        .docgaga-note-panel-type-select-list{
+          display: inline-block;
+          width: auto;
+          padding: 1px 0;
+          height: calc(#{$note-panel-title-height} + 2px);
+          line-height: $note-panel-title-height;
+          text-align: center;
+          box-sizing: border-box !important;
+          li{
+            &:before{
+              content: '';
+              }
+            }
+          }
+        select.docgaga-note-panel-category-select{
+          border: none;
+          outline: none;
+          background: #EEEEFF !important;
+          display: block;
+          height: $note-panel-title-height;
+          padding: 0 .2em;
+          margin: 0 .5em;
+          font-size: $note-panel-title-font-size;
+          option{
+            background: #FFFFFF !important;
+            color: #000000 !important;
+            }
+          }
+        .docgaga-note-panel-note-title{
+          padding-left: 0.5em;
+          font-size: $note-panel-title-font-size;
+          height: calc(#{$note-panel-title-height} + 2px);
+          display: block;
+          }
+        .docgaga-note-panel-textarea{
+          width: calc(100% - 1em);
+          height: calc(100% - 2.5em);
+          margin-top: 0.2em;
+          margin-left: .3em;
+          padding: 0.25em;
+          border: none;
+          resize: none;
+          background: #FCFCFC !important;
+          box-shadow: 0 0 2px #BBBBBB;
+          @include thin-scrollbar;
+          }
+        }
+      }
+    }
+  }
+
+@mixin horizontal-layout{
+  .docgaga-note-panel-wrapper{
+    position: relative;
+    .docgaga-note-panel-text-panel{
+      float: left;
+      width: 40%;
+      height: 100%;
+      .docgaga-note-panel-text-content{
+        }
+      }
+    .docgaga-note-panel-note-panel{
+      float: right;
+      width: 60%;
+      height: calc(100% - #{$note-panel-keyword-select-height}) !important;
+      .docgaga-note-panel-textarea{
+        height: calc(100% - 2.5em) !important;
+        }
+      }
+    }
+    .docgaga-note-panel-keyword-select{
+      width: 60%;
+      }
+  }
+
+@mixin no-text-layout{
+  .docgaga-note-panel-wrapper{
+    position: relative;
+    .docgaga-note-panel-text-panel{
+      display: none;
+    }
+    .docgaga-note-panel-note-panel{
+      clear: both;
+      width: 100%;
+      height: calc(100% - #{$note-panel-keyword-select-height}) !important;
+      .docgaga-note-panel-textarea{
+        height: calc(100% - 2.5em) !important;
+        }
+      }
+    }
+    .docgaga-note-panel-keyword-select{
+      width: 100%;
+      }
+  }
+
+.docgaga-note-panel{
+  &.hidden{
+    display: none;
+    }
+  *{
+    font-size: 1em;
+    color: #000000 !important;
+    text-align: left;
+    }
+
+  @include reset;
+  @include note-panel-default;
+
+  .docgaga-note-panel-clearfix{
+    clear: both;
+    }
+
+  &.docgaga-note-panel-set-top{
+    @include horizontal-layout;
+
+    position: fixed;
+    width: $note-panel-set-top-width;
+    height: $note-panel-set-top-height;
+    top: $note-panel-set-top-margin-top;
+    left: calc((100% - #{$note-panel-set-top-width}) / 2);
+    }
+
+  &.docgaga-note-panel-max{
+    @include horizontal-layout;
+
+    position: fixed;
+    width: $note-panel-max-width;
+    height: $note-panel-max-height;
+    top: calc((100% - #{$note-panel-max-height}) / 2);
+    left: calc((100% - #{$note-panel-max-width}) / 2);
+    }
+  
+  &.docgaga-note-panel-no-text{
+    @include no-text-layout;
+    }
+  }
