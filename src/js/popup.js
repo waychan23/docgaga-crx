@@ -200,7 +200,7 @@ window.onload = function(){
 				domMap.userTitle.text('暂时无法获取笔记数量');
 			}
 		}).catch(function(e){
-			sendResponse({ error: e });
+			console.log(e);
 		});
 	}
 
