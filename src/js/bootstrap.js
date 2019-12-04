@@ -51,8 +51,6 @@ var state = {
 msgService.listen('change-url', null , function(){
 	if(!document.hidden){
 		state.init = false;
-//		console.log('change-url');
-//		console.log('in listener for "change-url" checkShouldLaunch: ', state);
 		checkShouldLaunch();
 	}
 	return true;
@@ -65,14 +63,12 @@ msgService.listen('check-launched', null, function(msg, sender, sendResponse){
 
 msgService.listen('bootstrap', null, function(msg, sender, sendResponse){
 	bootstrap('force');
-//	console.debug('in listener for "boostrap", boostraping: ', state);
 	sendResponse({ 'success': state.launched });
 	return true;
 });
 
 msgService.listen('destroy', null, function(msg, sender, sendResponse){
 	destroy();
-//	console.debug('in listener for "destroy", boostraping: ', state);
 	sendResponse({ 'success': !state.launched });
 	return true;
 });
@@ -81,12 +77,10 @@ setTimeout(function(){
 	//as a fallback when 'change-url' event somehow not successfully dispatched
 	if(state.init){
 		checkShouldLaunch();
-//		console.debug('init checShouldLaunch', state);
 	}
 }, 2000);
 
 function bootstrap(force){
-//	console.log('bootstraping ...:', force);
 	if(!state.shouldLaunch && !force){
 		return;
 	}
@@ -172,13 +166,12 @@ function destroy(){
 
 	state.launched = false;
 }
-//setUpdatePolicy();
 
 function onVisibilityChange(){
 	var vis = !document.hidden;
 
-	if(!state.init && !state.focus && vis && state.launched){
-//		console.log('visibility change');
+	// if(!state.init && !state.focus && vis && state.launched){
+	if(!state.focus && vis && state.launched){
 		checkRemoteOpen();
 	}
 
@@ -199,11 +192,9 @@ function checkShouldLaunch(){
 		if(yes){
 			state.shouldLaunch = true;
 			bootstrap();
-//			console.debug('in checkShouldLaunch boostraping: ', state);
 		}else{
 			state.shouldLaunch = false;
 			destroy();
-//			console.debug('in checkShouldLaunch destroying: ', state);
 		}
 	});
 }
@@ -225,8 +216,7 @@ function checkAutoSearch(){
 		if(rs.success){
 			noteListPanel.refresh();
 		}else{
-			//TODO delegate error to global notification center
-			//console.warn(rs);
+			console.error(rs);
 		}
 	});
 }
@@ -235,15 +225,13 @@ function checkRemoteOpen(){
 	asap(function(){
 		noteService.checkRemoteOpen(function(msg){
 			if(msg && msg.noteId){
-				noteListPanel.checkReady().then(function(rs){
-					if(rs && rs.ready){
-//						console.log('open: ', msg.noteId);
-						notePanel.openNote(msg.noteId);
-					}
-				});
-			}else{
-//				console.log('hide ...');
-				notePanel.hide();
+				if(!notePanel.isOpen() || window.confirm('【汤圆笔记】您从其他页面打开了一个笔记，但是当前页面有已打开的笔记，可能有未保存的修改，是否放弃这些修改？')){
+					noteListPanel.checkReady().then(function(rs){
+						if(rs && rs.ready){
+							notePanel.openNote(msg.noteId);
+						}
+					});
+				}
 			}
 		});
 	});
@@ -265,7 +253,6 @@ function onNoteListDeleteNoteSuccess(event){
 	var note = notePanel.getNote();
 	if((note && note.pk) == event.pk){
 		notePanel.hide();
-//		console.log('hide');
 	}
 }
 
@@ -277,7 +264,6 @@ function onSaveNoteSuccess(event){
 	noteListPanel.refresh();
 	notePanel.hide();
 	noteListPanel.blink();
-//	console.log('hide');
 }
 
 function onSaveNoteError(event){
@@ -327,22 +313,4 @@ function noteHandler(event, selection){
 	}
 	notePanel.show(selection);
     event.stopPropagation();
-}
-
-function setUpdatePolicy(){
-	$(document).on('visibilitychange', function(){
-		var vis = !document.hidden;
-
-		if(!state.focus && vis){
-			noteListPanel.refresh();
-		}
-
-		state.focus = vis;
-	});
-
-	setInterval(function(){
-		if(state.focus){
-			noteListPanel.refresh();
-		}
-	}, 60 * 1000 * 2);
 }

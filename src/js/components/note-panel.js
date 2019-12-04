@@ -684,6 +684,10 @@ NotePanel.prototype.openNote = function(notePk){
 	});
 };
 
+NotePanel.prototype.isOpen = function(){
+	return this._state.show;
+}
+
 NotePanel.prototype.getNote = function(){
 	var self = this,
 		s = self._state;
