@@ -13,6 +13,10 @@ $default-theme-font-color: #EFEFEF;
 $default-theme-hover-bg-color: #0011FF;
 $default-theme-hover-font-color: #FFFFFF;
 
+@mixin material-icon-patches {
+  font-feature-settings: 'liga' !important;
+}
+
 @mixin reset{
   box-sizing: $default-box-sizing !important;
   font-size: $default-font-size;
@@ -226,6 +230,7 @@ $default-theme-hover-font-color: #FFFFFF;
       padding: 0 .1em;
       user-select: none;
       @include note-type-icon-colors("id");
+      @include material-icon-patches;
     }
     img[data-role=icon]{
       height: 95% !important;
