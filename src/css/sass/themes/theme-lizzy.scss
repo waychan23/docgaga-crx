@@ -26,6 +26,7 @@ $theme-lizzy-color-warn: orange;
         font-family: "DocGaga Material Icons" !important;
         font-size: calc(16px * #{$scale}) !important;
         color: $theme-lizzy-color-primary !important;
+        @include material-icon-patches;
     }
     .docgaga-keyword-select-error-info{
         left: 4px !important;
@@ -294,6 +295,7 @@ $theme-lizzy-color-warn: orange;
                 font-size: 16px !important;
                 height: 100% !important;
                 box-sizing: border-box !important;
+                @include material-icon-patches;
                 &:hover{
                     background: $theme-lizzy-color-primary-hover !important;
                 }
@@ -316,6 +318,7 @@ $theme-lizzy-color-warn: orange;
             .docgaga-note-list-control-panel-toggle-btn{
                 font-family: "DocGaga Material Icons" !important;
                 display: none !important;
+                @include material-icon-patches;
             }
             ul.docgaga-note-list-tabs{
                 width: 100%;
@@ -380,6 +383,7 @@ $theme-lizzy-color-warn: orange;
                 box-sizing: border-box !important;
                 line-height: 2em !important;
                 height: 100% !important;
+                @include material-icon-patches;
                 &:hover{
                     background: $theme-lizzy-light-bg-color-hover !important;
                 }
@@ -433,6 +437,7 @@ $theme-lizzy-color-warn: orange;
                     font-family: "DocGaga Material Icons" !important;
                     background: none;
                     color: $theme-lizzy-color-primary !important;
+                    @include material-icon-patches;
                     &:hover{
                         background: $theme-lizzy-color-primary !important;
                         color: $theme-lizzy-plain-bg-color !important;
@@ -455,6 +460,7 @@ $theme-lizzy-color-warn: orange;
                     font-family: "DocGaga Material Icons" !important;
                     background: $theme-lizzy-color-primary !important;
                     line-height: calc(2em + 2px) !important;
+                    @include material-icon-patches;
                     &:hover{
                         background: $theme-lizzy-color-primary-hover !important;
                     }

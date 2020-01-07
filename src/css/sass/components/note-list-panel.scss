@@ -386,6 +386,7 @@ $tab-panel-height: 1.8em;
             margin-bottom: $tab-panel-height * 0.15;
             font-size: 1em !important;
             color: #0000FF !important;
+            @include material-icon-patches;
           }
           span[data-role=count]{
             font-size: .9em;
@@ -483,6 +484,7 @@ $tab-panel-height: 1.8em;
                 font-family: "DocGaga Material Icons" !important;
                 color: #0000FF !important;
                 margin-left: .3em !important;
+                @include material-icon-patches;
               }
               &:hover{
                 color: #FF0000 !important;
@@ -536,6 +538,7 @@ $tab-panel-height: 1.8em;
               height: $list-item-font-size !important;
               display: inline;
               border-radius: 50%;
+              @include material-icon-patches;
               }
             }
           &:active{
@@ -556,6 +559,7 @@ $tab-panel-height: 1.8em;
               float: left !important;
               margin-right: .5em !important;
               @include note-type-icon-colors("type");
+              @include material-icon-patches;
             }
             img{
               float: left;

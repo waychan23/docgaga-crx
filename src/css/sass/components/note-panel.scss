@@ -70,6 +70,7 @@ $note-panel-keyword-select-height: 30px;
       span[data-role=docgaga-note-panel-title-icon]{
         font-family: "DocGaga Material Icons" !important;
         color: #FFFFFF !important;
+        @include material-icon-patches;
         }
       .docgaga-note-panel-layout-btn{
         line-height: calc(#{$note-panel-header-height} - 1px);
@@ -80,6 +81,7 @@ $note-panel-keyword-select-height: 30px;
         font-weight: bold;
         border: none;
         font-family: "DocGaga Material Icons" !important;
+        @include material-icon-patches;
         &:hover{
           background: $default-theme-hover-bg-color !important;
           font-weight: bolder;
@@ -156,6 +158,7 @@ $note-panel-keyword-select-height: 30px;
             line-height: $note-panel-footer-height;
             color: #FFFFFF !important;
             margin-left: .5em !important;
+            @include material-icon-patches;
             }
           }
         }
