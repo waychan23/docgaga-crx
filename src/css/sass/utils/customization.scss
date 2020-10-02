@@ -58,6 +58,8 @@ $default-theme-hover-font-color: #FFFFFF;
     word-wrap: normal !important;
   }
   div{
+    margin: 0;
+    padding: 0;
     display: block;
     flex-direction: none;
     -webkit-box-align: none;
